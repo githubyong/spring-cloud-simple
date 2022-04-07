@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: eureka
+
+  boot:
+    admin:
+      client:
+        enabled: true
+        url: http://localhost:8788,http://localhost:8786
+        instance.service-host-type: ip
+server:
+  port: 8761
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health"
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: @eureka.client.serviceUrl.defaultZone@
+  instance:
+    prefer-ip-address: false
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
+  server:
+    eviction-interval-timer-in-ms: 2000                    #定时检查心跳的间隔
+    renewal-threshold-update-interval-ms: 5000            # 更新阈值时间间隔，和自我保护有关
+    enable-self-preservation: false
+    response-cache-update-interval-ms: 2000

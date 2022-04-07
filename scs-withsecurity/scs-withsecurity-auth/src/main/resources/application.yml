@@ -1,0 +1,27 @@
+server:
+  servlet:
+    context-path: /authServer
+  port: 9003
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    #   持久化 嵌入模式
+    url: jdbc:h2:file:~/scs-auth;DB_CLOSE_DELAY=-1;MODE=MySQL;AUTO_RECONNECT=TRUE
+    #初始化数据库，springboot 2.3的版本支持这样配置，2.6的版本不能这么配置
+    schema: classpath:sql/test_schema.sql #建库sql
+    data: classpath:sql/test_data.sql #建库sql
+    initialization-mode: always
+  h2:
+    console:
+      enabled: true
+      #  h2 访问路径上下文
+      path: /h2-console
+      settings:
+        trace: false
+        #      允许console 远程访问 默认false
+        web-allow-others: true
+
+security:
+  oauth2:
+    signingKey: scsauth

@@ -1,0 +1,41 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: eureka
+  security:
+    user:
+      name: eureka.admin
+      password: eureka.pwd
+
+management:
+  endpoint:
+    health:
+      show-details: when_authorized
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: @eureka.client.serviceUrl.defaultZone@
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  server:
+    eviction-interval-timer-in-ms: 2000                    #定时检查心跳的间隔
+    renewal-threshold-update-interval-ms: 5000            # 更新阈值时间间隔，和自我保护有关
+    enable-self-preservation: false
+    response-cache-update-interval-ms: 2000
+debug: false

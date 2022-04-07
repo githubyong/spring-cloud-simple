@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ordersvc
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver

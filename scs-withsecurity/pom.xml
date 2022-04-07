@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-cloud-simple</artifactId>
+        <groupId>org.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>scs-withsecurity</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>scs-withsecurity-eureka</module>
+        <module>scs-withsecurity-conf</module>
+        <module>scs-withsecurity-gate</module>
+        <module>scs-withsecurity-order</module>
+        <module>scs-withsecurity-admin</module>
+        <module>scs-withsecurity-common</module>
+        <module>scs-withsecurity-auth</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+<!--        <eureka.client.serviceUrl.defaultZone>http://localhost:8762/eureka/</eureka.client.serviceUrl.defaultZone>-->
+        <eureka.client.serviceUrl.defaultZone>http://eureka.admin:eureka.pwd@localhost:8762/eureka/</eureka.client.serviceUrl.defaultZone>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>scs-withsecurity-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

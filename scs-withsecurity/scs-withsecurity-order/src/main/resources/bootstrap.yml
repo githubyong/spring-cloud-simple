@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: ordersvc
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver
+      username: admin
+      password: admin
+
+eureka:
+  client:
+    service-url:
+      defaultZone: @eureka.client.serviceUrl.defaultZone@

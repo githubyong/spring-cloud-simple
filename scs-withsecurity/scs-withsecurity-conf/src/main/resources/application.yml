@@ -1,0 +1,47 @@
+server:
+    port: 9002
+
+conf_dir: @conf_repo@
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: configserver
+    bus:
+      enabled: true
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:${conf_dir}
+
+
+  security:
+    user:
+      name: admin
+      password: admin
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: @eureka.client.serviceUrl.defaultZone@
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: when_authorized
+
+jasypt:
+  encryptor:
+    password: test
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator

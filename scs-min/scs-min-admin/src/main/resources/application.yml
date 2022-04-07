@@ -1,0 +1,9 @@
+server:
+  port: 8788
+spring:
+  application:
+    name: springboot-admin-server
+  boot:
+    admin:
+      discovery:
+        enabled: true

@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: gatewaysvc
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver
+
+eureka:
+  client:
+    service-url:
+      defaultZone: @eureka.client.serviceUrl.defaultZone@

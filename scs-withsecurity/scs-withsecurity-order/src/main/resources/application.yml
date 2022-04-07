@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /orderserver
+  port: 8002
+
+
+app:
+  oauth-switch-on: true
+  swagger-switch-on: true
+debug: false
