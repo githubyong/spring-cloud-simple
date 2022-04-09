@@ -24,12 +24,101 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-<!--        <eureka.client.serviceUrl.defaultZone>http://localhost:8762/eureka/</eureka.client.serviceUrl.defaultZone>-->
+        <springboot.version>2.3.12.RELEASE</springboot.version>
+        <zuul.version>2.2.10.RELEASE</zuul.version>
+        <spring-cloud-starter-netflix.version>3.1.1</spring-cloud-starter-netflix.version>
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
+<!--        <spring-boot-admin.version>2.4.0</spring-boot-admin.version>-->
+        <spring-cloud-security.version>2.2.5.RELEASE</spring-cloud-security.version>
+        <spring-security-oauth2.version>2.3.5.RELEASE</spring-security-oauth2.version>
+        <jasypt-spring-boot-starter.version>3.0.4</jasypt-spring-boot-starter.version>
+        <spring-cloud-starter-bootstrap.version>3.0.4</spring-cloud-starter-bootstrap.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
+        <jwt.version>1.0.10.RELEASE</jwt.version>
+        <!--        <eureka.client.serviceUrl.defaultZone>http://localhost:8762/eureka/</eureka.client.serviceUrl.defaultZone>-->
         <eureka.client.serviceUrl.defaultZone>http://eureka.admin:eureka.pwd@localhost:8762/eureka/</eureka.client.serviceUrl.defaultZone>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+<!--                                <version>2021.0.0</version>-->
+                <version>Hoxton.SR12</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                <version>${spring-cloud-starter-bootstrap.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${spring-cloud-security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.example</groupId>
                 <artifactId>scs-withsecurity-common</artifactId>
@@ -45,5 +134,17 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <layout>ZIP</layout>
+                        <executable>true</executable>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>
